@@ -1,3 +1,8 @@
+- Delete the top `#Requires -RunAsAdministrator` if you're just updating the config file (ie running without `-msiFile`)
+  - I had to run twice, once as an admin with `-msiFile` to install the files, then again without admin to make sure the correct `applicationHost.config` file was being updated (when running as admin it tries to update the admin's config file, which doesn't exist)
+- To run as admin I recommend starting an admin terminal, then starting a subshell with `pwsh.exe -ExecutionPolicy Unrestricted`, else you'll probably get an error about scripts being disabled.
+- The install script assumes it has been run once without `-fileName` before using `-fileName` (only applicable if updating another `applicationHost.config` file besides the default)
+
 # PowerShell Scripts to Install/Uninstall HttpPlatformHandler for IIS Express
 
 > * Learn how to install CORS module from [this sibling project](https://github.com/lextm/iisexpress-cors).
